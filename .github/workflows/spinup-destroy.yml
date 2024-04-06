@@ -14,8 +14,9 @@ env:
 
 jobs: 
   setup-up-azure-resource:
+    if: contains(github.event.pull_request.labels.*.name, 'spin up environment' )
     runs-on: ubuntu-latest
-    if: conatins(github.event.pull_request.labels.*.name,'spin up environment')
+    # if: conatins(github.event.pull_request.labels.*.name,'spin up environment')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
