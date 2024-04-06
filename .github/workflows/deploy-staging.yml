@@ -72,24 +72,24 @@ jobs:
     name: Deploy app container to Azure
     steps:
       - name: "Login via Azure CLI"
-        uses: Azure/login@v2.0.0
+        uses: azure/login@v2.0.0
         with: 
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-      - uses: Azure/docker-login@v1
+      - uses: azure/docker-login@v1
         with: 
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN}}
           login-server: ${{env.IMAGE_REGISTRY_URL}} 
 
       - name: Deploy web app container
-        uses: Azure/webapps-deploy@v3.0.0
+        uses: azure/webapps-deploy@v3.0.0
         with:  
           app-name: ${{env.AZURE_WEBAPP_NAME}}
           images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}/${{env.DOCKER_IMAGE_NAME}}:${{ github.sha }}
 
       - name: Azure logout via Azure CLI
-        uses: Azure/cli@v2.0.0
+        uses: azure/cli@v2.0.0
         with: 
           inlineScript: |
             az logout
