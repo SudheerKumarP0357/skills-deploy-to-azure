@@ -1,4 +1,5 @@
 name: Configure Azure evnironment
+# Create and destroy in Azure
 
 on: 
   pull_request:
