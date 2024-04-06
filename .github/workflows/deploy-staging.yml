@@ -1,11 +1,12 @@
 name: Deploy the app
+# Deploy to a staging environment
 
 on: 
   pull_request: 
     types: [labeled]
 
 env: 
-  IMAGE_REGISTRY_URL: ghce.io
+  IMAGE_REGISTRY_URL: ghcr.io
   DOCKER_IMAGE_NAME: SudheerKumarP0357-azure-ttt
   AZURE_WEBAPP_NAME: SudheerKumarP0357-ttt-app
 
@@ -22,7 +23,7 @@ jobs:
           node-version: 16
       - name: npm install and build webpack
         run: |
-          npm install
+          npm install webpack@4 --save-dev
           npm run build
       - uses: actions/upload-artifact@v4.3.1
         with: 
