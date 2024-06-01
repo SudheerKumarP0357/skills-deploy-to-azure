@@ -77,7 +77,7 @@ jobs:
         with: 
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-      - uses: azure/docker-login@v1
+      - uses: azure/docker-login@v2
         with: 
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN}}
